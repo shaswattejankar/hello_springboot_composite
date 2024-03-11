@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to build + deploy to sprinboot app to ec2
+    steps:
+      - uses: actions/checkout@v4
+      - id: foo
+        uses: shaswattejankar/springboot_composite_action@main
+        with:
+          USERNAME: ${{ secrets.USERNAME }}
+          PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
